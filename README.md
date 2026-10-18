@@ -27,6 +27,21 @@ Synthetic data -> Validation -> EDA -> Pipeline (impute / scale / encode)
 -> Fairness audit -> Recommendation engine -> Streamlit dashboard
 ```
 
+## Project Structure
+```
+Employee-Performance-Predictor/
+├── data/            synthetic dataset (generated)
+├── notebooks/       optional exploration
+├── src/             config, data generation, preprocessing, EDA, training,
+│                    evaluation, fairness, recommendations
+├── models/          saved model (.pkl, generated)
+├── outputs/         reports and CSVs
+├── images/          charts used in this README
+├── app.py           Streamlit dashboard
+├── main.py          runs the whole pipeline
+└── requirements.txt
+```
+
 ## How to Run
 ```bash
 git clone https://github.com/arppitha-ai/Employee-Performance-Predictor.git
@@ -37,6 +52,7 @@ pip install -r requirements.txt
 python main.py                    # data -> EDA -> train -> evaluate -> fairness -> action plans
 streamlit run app.py              # dashboard at http://localhost:8501
 ```
+`python main.py` takes a few minutes because of the Random Forest grid search.
 
 ## Methodology
 1. Synthetic data for 2,000 employees, 26 features, ~3% missing values in 3 columns
@@ -50,36 +66,59 @@ streamlit run app.py              # dashboard at http://localhost:8501
 ## Results
 | Model | 5-fold CV macro-F1 |
 |---|---|
-| Logistic Regression (balanced) | [FILL] |
-| Random Forest (tuned) | [FILL] |
+| Logistic Regression (balanced) | 0.759 |
+| Random Forest (tuned) | at least 0.759 (best of the grid search) |
 
-Final model saved: **[Logistic Regression / Random Forest]**.
+Final model saved: **Random Forest**. The code keeps it only if it matches or beats the
+Logistic Regression baseline in cross-validation.
 
-Hold-out test set (400 employees): **Accuracy [FILL], Macro-F1 [FILL]**
+Hold-out test set (400 employees the model never saw): **Accuracy 0.770, Macro-F1 0.772**
 
 | Band | Precision | Recall | F1 |
 |---|---|---|---|
-| Low | [FILL] | [FILL] | [FILL] |
-| Medium | [FILL] | [FILL] | [FILL] |
-| High | [FILL] | [FILL] | [FILL] |
+| Low | 0.721 | 0.800 | 0.758 |
+| Medium | 0.795 | 0.735 | 0.764 |
+| High | 0.779 | 0.810 | 0.794 |
 
-Top drivers (permutation importance): [FILL top 5 from outputs/feature_importance.csv]
+Performance is fairly even across bands. Low has the lowest precision (some Medium
+employees are flagged as Low), while Medium has the lowest recall because it sits
+between the two extremes.
+
+Top drivers (permutation importance): on_time_delivery_rate (0.150), manager_score (0.110),
+code_review_score (0.094), peer_feedback_score (0.061), bug_count (0.037).
 
 ![Confusion matrix](images/06_confusion_matrix.png)
 ![Feature importance](images/07_feature_importance.png)
 ![Class balance](images/01_class_balance.png)
 
 ## Fairness Audit
-[FILL: one or two sentences from outputs/fairness_report.csv. Mention any group with a
-disparate_impact below 0.8 and note small groups can be noisy.]
+`gender` is not a model input. The audit compares how often each group is predicted **High**.
+
+- **Gender:** High-band selection rates are similar (Female 24.6%, Male 27.1%, ratio 0.91),
+  above the 0.8 four-fifths threshold.
+- **Department and job level:** several groups fall below 0.8 (Engineering 0.61, HR 0.62,
+  Lead 0.68, Senior 0.67). These groups are small (28 to 162 employees in the test set),
+  and the ratio is measured against the highest group (Sales, 34.8%), so the flags may be
+  sampling noise. The simulation never uses department or job level in the performance
+  score, so they are not evidence of real bias.
+- Accuracy is similar across groups (0.71 to 0.82), so the model is not much worse for
+  any group.
+
+**Next step in a real setting:** compare predicted High rates with the actual High rates
+per group and add confidence intervals. Flags are prompts to investigate, not verdicts.
 
 ## Dashboard
 ![Dashboard](images/dashboard.png)
+
+The Streamlit app shows band counts with a department filter, and an employee lookup with
+the predicted band, risk of Low, and suggested drivers and coaching actions.
 
 ## Limitations
 - Labels come from a simulated formula, so the model recovers that rule. The metrics
   demonstrate the pipeline, not real-world accuracy.
 - Permutation importance shows association, not causation.
+- Dashboard counts are scored on all 2,000 employees, including training data. Use the
+  hold-out metrics above for performance.
 - Real deployment needs privacy review, bias audits and human decision-making.
 
 ## Future Work
@@ -87,4 +126,4 @@ Real or public HR dataset · SHAP per-employee explanations · attrition predict
 FastAPI service · MLflow tracking · drift monitoring (PSI) · temporal train/test split
 
 ## Author
-Arppitha 
+Arppitha R A

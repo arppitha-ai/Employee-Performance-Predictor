@@ -1,0 +1,13 @@
+group_col,group,n,high_selection_rate,accuracy,macro_f1,disparate_impact,flag
+gender,Female,171,0.246,0.784,0.788,0.907,False
+gender,Male,229,0.271,0.76,0.759,1.0,False
+department,Data,56,0.286,0.786,0.784,0.82,False
+department,Engineering,141,0.213,0.773,0.781,0.611,True
+department,HR,28,0.214,0.786,0.776,0.615,True
+department,QA,49,0.265,0.816,0.818,0.761,True
+department,Sales,66,0.348,0.712,0.699,1.0,False
+department,Support,60,0.267,0.767,0.768,0.765,True
+job_level,Junior,47,0.319,0.766,0.771,1.0,False
+job_level,Lead,60,0.217,0.717,0.692,0.679,True
+job_level,Mid,162,0.296,0.79,0.791,0.928,False
+job_level,Senior,131,0.214,0.771,0.784,0.67,True

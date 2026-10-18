@@ -1,0 +1,21 @@
+employee_id,department,predicted_band,p_low,key_drivers,actions,review_date
+EMP0603,QA,Low,0.92,High bugs + low review score; Low training hours; High unplanned absences,Pair programming + code-quality course; Assign targeted certification (AWS CCP / Azure DP-900),2026-11-17
+EMP0034,Sales,Low,0.92,High bugs + low review score; Low training hours; Low mid-year manager score,Pair programming + code-quality course; Assign targeted certification (AWS CCP / Azure DP-900),2026-11-17
+EMP1300,Engineering,Low,0.87,High bugs + low review score; Low mid-year manager score,Pair programming + code-quality course; Goal-setting and coaching check-in,2026-11-17
+EMP0367,Data,Low,0.87,Low on-time delivery; High bugs + low review score; High unplanned absences,Sprint-planning & estimation workshop; Pair programming + code-quality course,2026-11-17
+EMP0998,Engineering,Low,0.86,Low on-time delivery; High bugs + low review score; Low training hours,Sprint-planning & estimation workshop; Pair programming + code-quality course,2026-11-17
+EMP1386,Engineering,Low,0.86,Low on-time delivery; High bugs + low review score; High unplanned absences,Sprint-planning & estimation workshop; Pair programming + code-quality course,2026-11-17
+EMP1589,Engineering,Low,0.86,High bugs + low review score; Low mid-year manager score,Pair programming + code-quality course; Goal-setting and coaching check-in,2026-11-17
+EMP1796,Support,Low,0.84,Low on-time delivery; High bugs + low review score; Low training hours,Sprint-planning & estimation workshop; Pair programming + code-quality course,2026-11-17
+EMP1767,Support,Low,0.83,Low on-time delivery; High unplanned absences; Low mid-year manager score,Sprint-planning & estimation workshop; Manager 1:1 on workload and wellbeing,2026-11-17
+EMP0874,QA,Low,0.83,Low on-time delivery,Sprint-planning & estimation workshop,2026-11-17
+EMP1280,HR,Low,0.82,Low on-time delivery; Low training hours; Weak peer feedback,Sprint-planning & estimation workshop; Assign targeted certification (AWS CCP / Azure DP-900),2026-11-17
+EMP0768,Support,Low,0.81,High bugs + low review score; Low training hours; Low mid-year manager score,Pair programming + code-quality course; Assign targeted certification (AWS CCP / Azure DP-900),2026-11-17
+EMP1932,Sales,Low,0.81,Low on-time delivery; Low mid-year manager score,Sprint-planning & estimation workshop; Goal-setting and coaching check-in,2026-11-17
+EMP1396,Engineering,Low,0.81,Low on-time delivery; High bugs + low review score,Sprint-planning & estimation workshop; Pair programming + code-quality course,2026-11-17
+EMP0263,Engineering,Low,0.8,Low on-time delivery; Low training hours; Low mid-year manager score,Sprint-planning & estimation workshop; Assign targeted certification (AWS CCP / Azure DP-900),2026-11-17
+EMP0343,Support,Low,0.8,Low on-time delivery; Low training hours,Sprint-planning & estimation workshop; Assign targeted certification (AWS CCP / Azure DP-900),2026-11-17
+EMP0209,Support,Low,0.8,High bugs + low review score; Low training hours; High unplanned absences,Pair programming + code-quality course; Assign targeted certification (AWS CCP / Azure DP-900),2026-11-17
+EMP0127,Engineering,Low,0.8,Low on-time delivery; High unplanned absences; Low mid-year manager score,Sprint-planning & estimation workshop; Manager 1:1 on workload and wellbeing,2026-11-17
+EMP1100,Support,Low,0.79,High bugs + low review score; Low mid-year manager score,Pair programming + code-quality course; Goal-setting and coaching check-in,2026-11-17
+EMP0113,Support,Low,0.78,Low on-time delivery; High bugs + low review score; Weak peer feedback,Sprint-planning & estimation workshop; Pair programming + code-quality course,2026-11-17
